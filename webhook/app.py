@@ -20,28 +20,27 @@ def index():
     try:
         data = request.get_json(force=True)
         print("=" * 50)
-        print("📨 MINIO EVENT RECEIVED")
+        print(" MINIO EVENT RECEIVED")
         print("=" * 50)
         print("Received S3 event:", json.dumps(data, indent=2))
         
-        # Defensive extraction of object_name
+        
         object_name = None
         try:
             object_name = data["Records"][0]["s3"]["object"]["key"]
             bucket_name = data["Records"][0]["s3"]["bucket"]["name"]
-            print(f"📁 Object: {object_name}")
-            print(f"🪣 Bucket: {bucket_name}")
+            print(f"Object: {object_name}")
+            print(f"Bucket: {bucket_name}")
         except Exception as e:
-            print(f"❌ Could not extract object_name: {e}")
+            print(f"Could not extract object_name: {e}")
             print(f"Event structure: {data}")
         
         if object_name:
-            # Trigger Airflow DAG
+            
             dag_config = {"conf": {"object_name": object_name}}
-            print(f"🚀 Triggering DAG with config: {json.dumps(dag_config, indent=2)}")
+            print(f"Triggering DAG with config: {json.dumps(dag_config, indent=2)}")
             print(f"[DEBUG] Using credentials: {AIRFLOW_USERNAME}/{AIRFLOW_PASSWORD}")
             print(f"[DEBUG] Auth type: HTTPBasicAuth")
-            # Preemptive Basic Auth workaround
             userpass = f"{AIRFLOW_USERNAME}:{AIRFLOW_PASSWORD}".encode("utf-8")
             b64userpass = base64.b64encode(userpass).decode("utf-8")
             headers = {
