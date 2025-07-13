@@ -11,7 +11,7 @@ from airflow.operators.email import EmailOperator
 from airflow.models import Variable
 import shutil
 
-# Default arguments for the DAG
+
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
@@ -22,7 +22,7 @@ default_args = {
     'retry_delay': timedelta(minutes=5),
 }
 
-# MinIO configuration
+
 MINIO_ENDPOINT = 'http://minio:9000'
 MINIO_ACCESS_KEY = 'minioadmin'
 MINIO_SECRET_KEY = 'minioadmin'
@@ -79,7 +79,7 @@ def compress_file_from_minio(**context):
     os.remove(local_output_path)
     print(f"[INFO] Cleanup complete - temporary files removed")
 
-# Create the DAG
+
 dag = DAG(
     dag_id="minio_file_compressorone",
     description="Compress uploaded file from MinIO and upload back",
@@ -89,7 +89,7 @@ dag = DAG(
     catchup=False,
 )
 
-# Define the task
+
 compress_task = PythonOperator(
     task_id="compress_and_reupload",
     python_callable=compress_file_from_minio,
