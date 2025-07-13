@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  # MinIO Object Storage
+  
   minio:
     image: minio/minio:latest
     container_name: minio
@@ -22,7 +22,6 @@ services:
       timeout: 20s
       retries: 3
 
-  # Airflow Webserver
   airflow-webserver:
     image: apache/airflow:2.7.1
     container_name: airflow-webserver
@@ -60,7 +59,7 @@ services:
       retries: 5
     restart: always
 
-  # Airflow Scheduler
+  
   airflow-scheduler:
     image: apache/airflow:2.7.1
     container_name: airflow-scheduler
@@ -89,7 +88,7 @@ services:
     command: scheduler
     restart: always
 
-  # Airflow Worker
+  
   airflow-worker:
     image: apache/airflow:2.7.1
     container_name: airflow-worker
@@ -116,7 +115,7 @@ services:
     command: celery worker
     restart: always
 
-  # PostgreSQL Database
+ 
   postgres:
     image: postgres:13
     container_name: postgres
@@ -132,7 +131,7 @@ services:
       retries: 5
     restart: always
 
-  # Redis
+ 
   redis:
     image: redis:latest
     container_name: redis
@@ -143,7 +142,7 @@ services:
       retries: 50
     restart: always
 
-  # Webhook Server
+ 
   webhook:
     build:
       context: ./webhook
