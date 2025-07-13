@@ -1,0 +1,23 @@
+[2025-07-08T06:03:48.550+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: minio_file_compressor.compress_file manual__2025-07-08T06:02:46+00:00 [queued]>
+[2025-07-08T06:03:48.589+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: minio_file_compressor.compress_file manual__2025-07-08T06:02:46+00:00 [queued]>
+[2025-07-08T06:03:48.590+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 2
+[2025-07-08T06:03:48.636+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): compress_file> on 2025-07-08 06:02:46+00:00
+[2025-07-08T06:03:48.699+0000] {standard_task_runner.py:57} INFO - Started process 52 to run task
+[2025-07-08T06:03:48.753+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'minio_file_compressor', 'compress_file', 'manual__2025-07-08T06:02:46+00:00', '--job-id', '10', '--raw', '--subdir', 'DAGS_FOLDER/file_compress.py', '--cfg-path', '/tmp/tmp1y85uz0d']
+[2025-07-08T06:03:48.778+0000] {standard_task_runner.py:85} INFO - Job 10: Subtask compress_file
+[2025-07-08T06:03:49.549+0000] {task_command.py:415} INFO - Running <TaskInstance: minio_file_compressor.compress_file manual__2025-07-08T06:02:46+00:00 [running]> on host 46e48579a505
+[2025-07-08T06:03:49.979+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='minio_file_compressor' AIRFLOW_CTX_TASK_ID='compress_file' AIRFLOW_CTX_EXECUTION_DATE='2025-07-08T06:02:46+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-07-08T06:02:46+00:00'
+[2025-07-08T06:03:50.029+0000] {logging_mixin.py:151} INFO - Starting compression process for file: test_file.txt
+[2025-07-08T06:03:55.486+0000] {logging_mixin.py:151} INFO - Successfully downloaded test_file.txt to /tmp/test_file.txt
+[2025-07-08T06:03:55.494+0000] {logging_mixin.py:151} INFO - Compressed /tmp/test_file.txt to /tmp/test_file.txt.gz
+[2025-07-08T06:03:55.495+0000] {logging_mixin.py:151} INFO - Original size: 331 bytes
+[2025-07-08T06:03:55.495+0000] {logging_mixin.py:151} INFO - Compressed size: 242 bytes
+[2025-07-08T06:03:55.587+0000] {logging_mixin.py:151} INFO - Successfully uploaded /tmp/test_file.txt.gz to compressed-files/test_file.txt.gz
+[2025-07-08T06:03:58.190+0000] {logging_mixin.py:151} INFO - Error sending email: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 41be03b00d2f7-b38ee4797dasm10543989a12.26 - gsmtp')
+[2025-07-08T06:03:58.193+0000] {logging_mixin.py:151} INFO - Cleaned up /tmp/test_file.txt
+[2025-07-08T06:03:58.195+0000] {logging_mixin.py:151} INFO - Cleaned up /tmp/test_file.txt.gz
+[2025-07-08T06:03:58.196+0000] {logging_mixin.py:151} INFO - Successfully completed compression process for test_file.txt
+[2025-07-08T06:03:58.197+0000] {python.py:194} INFO - Done. Returned value was: None
+[2025-07-08T06:03:58.232+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=minio_file_compressor, task_id=compress_file, execution_date=20250708T060246, start_date=20250708T060348, end_date=20250708T060358
+[2025-07-08T06:03:58.335+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-07-08T06:03:58.453+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

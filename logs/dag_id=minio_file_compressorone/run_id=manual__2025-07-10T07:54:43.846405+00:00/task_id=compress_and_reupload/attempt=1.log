@@ -1,0 +1,26 @@
+[2025-07-10T07:55:28.011+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: minio_file_compressorone.compress_and_reupload manual__2025-07-10T07:54:43.846405+00:00 [queued]>
+[2025-07-10T07:55:28.163+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: minio_file_compressorone.compress_and_reupload manual__2025-07-10T07:54:43.846405+00:00 [queued]>
+[2025-07-10T07:55:28.164+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 2
+[2025-07-10T07:55:28.253+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): compress_and_reupload> on 2025-07-10 07:54:43.846405+00:00
+[2025-07-10T07:55:28.273+0000] {standard_task_runner.py:57} INFO - Started process 51 to run task
+[2025-07-10T07:55:28.291+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'minio_file_compressorone', 'compress_and_reupload', 'manual__2025-07-10T07:54:43.846405+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/file_compress.py', '--cfg-path', '/tmp/tmpfxbdu16l']
+[2025-07-10T07:55:28.300+0000] {standard_task_runner.py:85} INFO - Job 5: Subtask compress_and_reupload
+[2025-07-10T07:55:28.585+0000] {task_command.py:415} INFO - Running <TaskInstance: minio_file_compressorone.compress_and_reupload manual__2025-07-10T07:54:43.846405+00:00 [running]> on host 8f371c99a199
+[2025-07-10T07:55:29.550+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='minio_file_compressorone' AIRFLOW_CTX_TASK_ID='compress_and_reupload' AIRFLOW_CTX_EXECUTION_DATE='2025-07-10T07:54:43.846405+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-07-10T07:54:43.846405+00:00'
+[2025-07-10T07:55:29.590+0000] {logging_mixin.py:151} INFO - [INFO] Received object name: test_file.txt
+[2025-07-10T07:55:29.596+0000] {logging_mixin.py:151} INFO - [INFO] Downloading from: testing-files/test_file.txt
+[2025-07-10T07:55:29.606+0000] {logging_mixin.py:151} INFO - [INFO] Local input path: /tmp/test_file.txt
+[2025-07-10T07:55:29.620+0000] {logging_mixin.py:151} INFO - [INFO] Local output path: /tmp/test_file.txt.gz
+[2025-07-10T07:55:29.644+0000] {logging_mixin.py:151} INFO - [INFO] Compressed key: test_file.txt.gz
+[2025-07-10T07:55:59.714+0000] {logging_mixin.py:151} INFO - [INFO] Downloading file from MinIO...
+[2025-07-10T07:55:59.883+0000] {logging_mixin.py:151} INFO - [INFO] Downloaded file size: 331 bytes
+[2025-07-10T07:55:59.886+0000] {logging_mixin.py:151} INFO - [INFO] Compressing file...
+[2025-07-10T07:55:59.899+0000] {logging_mixin.py:151} INFO - [INFO] Compressed file size: 242 bytes
+[2025-07-10T07:55:59.900+0000] {logging_mixin.py:151} INFO - [INFO] Compression ratio: 1.37x
+[2025-07-10T07:55:59.900+0000] {logging_mixin.py:151} INFO - [INFO] Uploading compressed file to compressed-files/test_file.txt.gz
+[2025-07-10T07:55:59.968+0000] {logging_mixin.py:151} INFO - [INFO] Upload complete!
+[2025-07-10T07:56:00.174+0000] {logging_mixin.py:151} INFO - [INFO] Cleanup complete - temporary files removed
+[2025-07-10T07:56:00.185+0000] {python.py:194} INFO - Done. Returned value was: None
+[2025-07-10T07:56:00.255+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=minio_file_compressorone, task_id=compress_and_reupload, execution_date=20250710T075443, start_date=20250710T075528, end_date=20250710T075600
+[2025-07-10T07:56:00.403+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-07-10T07:56:00.583+0000] {taskinstance.py:2776} INFO - 1 downstream tasks scheduled from follow-on schedule check

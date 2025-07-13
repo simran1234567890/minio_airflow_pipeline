@@ -1,0 +1,23 @@
+[2025-07-10T08:07:21.963+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: minio_file_compressorone.compress_and_reupload manual__2025-07-10T08:02:14.342941+00:00 [queued]>
+[2025-07-10T08:07:21.991+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: minio_file_compressorone.compress_and_reupload manual__2025-07-10T08:02:14.342941+00:00 [queued]>
+[2025-07-10T08:07:21.992+0000] {taskinstance.py:1359} INFO - Starting attempt 2 of 2
+[2025-07-10T08:07:22.027+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): compress_and_reupload> on 2025-07-10 08:02:14.342941+00:00
+[2025-07-10T08:07:22.038+0000] {standard_task_runner.py:57} INFO - Started process 61 to run task
+[2025-07-10T08:07:22.049+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'minio_file_compressorone', 'compress_and_reupload', 'manual__2025-07-10T08:02:14.342941+00:00', '--job-id', '8', '--raw', '--subdir', 'DAGS_FOLDER/file_compress.py', '--cfg-path', '/tmp/tmp_5jnopgq']
+[2025-07-10T08:07:22.054+0000] {standard_task_runner.py:85} INFO - Job 8: Subtask compress_and_reupload
+[2025-07-10T08:07:22.254+0000] {task_command.py:415} INFO - Running <TaskInstance: minio_file_compressorone.compress_and_reupload manual__2025-07-10T08:02:14.342941+00:00 [running]> on host 8f371c99a199
+[2025-07-10T08:07:22.845+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='minio_file_compressorone' AIRFLOW_CTX_TASK_ID='compress_and_reupload' AIRFLOW_CTX_EXECUTION_DATE='2025-07-10T08:02:14.342941+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-07-10T08:02:14.342941+00:00'
+[2025-07-10T08:07:22.851+0000] {logging_mixin.py:151} INFO - [INFO] Received object name: None
+[2025-07-10T08:07:22.853+0000] {taskinstance.py:1935} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/file_compress.py", line 37, in compress_file_from_minio
+    raise ValueError("Missing 'object_name' in dag_run.conf")
+ValueError: Missing 'object_name' in dag_run.conf
+[2025-07-10T08:07:22.890+0000] {taskinstance.py:1398} INFO - Marking task as FAILED. dag_id=minio_file_compressorone, task_id=compress_and_reupload, execution_date=20250710T080214, start_date=20250710T080721, end_date=20250710T080722
+[2025-07-10T08:07:22.925+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 8 for task compress_and_reupload (Missing 'object_name' in dag_run.conf; 61)
+[2025-07-10T08:07:22.945+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2025-07-10T08:07:22.986+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

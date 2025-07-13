@@ -1,0 +1,43 @@
+[2025-07-08T06:47:48.547+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: minio_file_compressor.compress_file manual__2025-07-08T06:47:39+00:00 [queued]>
+[2025-07-08T06:47:48.629+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: minio_file_compressor.compress_file manual__2025-07-08T06:47:39+00:00 [queued]>
+[2025-07-08T06:47:48.630+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 2
+[2025-07-08T06:47:48.720+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): compress_file> on 2025-07-08 06:47:39+00:00
+[2025-07-08T06:47:48.770+0000] {standard_task_runner.py:57} INFO - Started process 59 to run task
+[2025-07-08T06:47:48.805+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'minio_file_compressor', 'compress_file', 'manual__2025-07-08T06:47:39+00:00', '--job-id', '11', '--raw', '--subdir', 'DAGS_FOLDER/file_compress.py', '--cfg-path', '/tmp/tmpw40o4sns']
+[2025-07-08T06:47:48.812+0000] {standard_task_runner.py:85} INFO - Job 11: Subtask compress_file
+[2025-07-08T06:47:49.088+0000] {task_command.py:415} INFO - Running <TaskInstance: minio_file_compressor.compress_file manual__2025-07-08T06:47:39+00:00 [running]> on host 46e48579a505
+[2025-07-08T06:47:49.644+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='minio_file_compressor' AIRFLOW_CTX_TASK_ID='compress_file' AIRFLOW_CTX_EXECUTION_DATE='2025-07-08T06:47:39+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-07-08T06:47:39+00:00'
+[2025-07-08T06:47:49.653+0000] {logging_mixin.py:151} INFO - Starting compression process for file: your_new_file.txt
+[2025-07-08T06:48:20.732+0000] {logging_mixin.py:151} INFO - Error downloading file: An error occurred (404) when calling the HeadObject operation: Not Found
+[2025-07-08T06:48:20.735+0000] {logging_mixin.py:151} INFO - Error in compression process: An error occurred (404) when calling the HeadObject operation: Not Found
+[2025-07-08T06:48:20.739+0000] {taskinstance.py:1935} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/file_compress.py", line 175, in process_file_compression
+    local_path = download_file_from_minio(object_name)
+  File "/opt/airflow/dags/file_compress.py", line 43, in download_file_from_minio
+    minio_client.download_file(SOURCE_BUCKET, object_name, local_path)
+  File "/home/airflow/.local/lib/python3.8/site-packages/boto3/s3/inject.py", line 190, in download_file
+    return transfer.download_file(
+  File "/home/airflow/.local/lib/python3.8/site-packages/boto3/s3/transfer.py", line 326, in download_file
+    future.result()
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/futures.py", line 103, in result
+    return self._coordinator.result()
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/futures.py", line 266, in result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/tasks.py", line 269, in _main
+    self._submit(transfer_future=transfer_future, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/download.py", line 354, in _submit
+    response = client.head_object(
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/client.py", line 535, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/client.py", line 980, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (404) when calling the HeadObject operation: Not Found
+[2025-07-08T06:48:20.848+0000] {taskinstance.py:1398} INFO - Marking task as UP_FOR_RETRY. dag_id=minio_file_compressor, task_id=compress_file, execution_date=20250708T064739, start_date=20250708T064748, end_date=20250708T064820
+[2025-07-08T06:48:20.921+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 11 for task compress_file (An error occurred (404) when calling the HeadObject operation: Not Found; 59)
+[2025-07-08T06:48:20.991+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2025-07-08T06:48:21.087+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

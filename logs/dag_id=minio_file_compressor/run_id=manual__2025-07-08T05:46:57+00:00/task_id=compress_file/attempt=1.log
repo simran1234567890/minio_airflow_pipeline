@@ -1,0 +1,42 @@
+[2025-07-08T05:47:01.104+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: minio_file_compressor.compress_file manual__2025-07-08T05:46:57+00:00 [queued]>
+[2025-07-08T05:47:01.151+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: minio_file_compressor.compress_file manual__2025-07-08T05:46:57+00:00 [queued]>
+[2025-07-08T05:47:01.153+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 2
+[2025-07-08T05:47:01.200+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): compress_file> on 2025-07-08 05:46:57+00:00
+[2025-07-08T05:47:01.229+0000] {standard_task_runner.py:57} INFO - Started process 62 to run task
+[2025-07-08T05:47:01.244+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'minio_file_compressor', 'compress_file', 'manual__2025-07-08T05:46:57+00:00', '--job-id', '7', '--raw', '--subdir', 'DAGS_FOLDER/file_compress.py', '--cfg-path', '/tmp/tmp7xa8d3rl']
+[2025-07-08T05:47:01.249+0000] {standard_task_runner.py:85} INFO - Job 7: Subtask compress_file
+[2025-07-08T05:47:01.502+0000] {task_command.py:415} INFO - Running <TaskInstance: minio_file_compressor.compress_file manual__2025-07-08T05:46:57+00:00 [running]> on host 46e48579a505
+[2025-07-08T05:47:02.059+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='minio_file_compressor' AIRFLOW_CTX_TASK_ID='compress_file' AIRFLOW_CTX_EXECUTION_DATE='2025-07-08T05:46:57+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-07-08T05:46:57+00:00'
+[2025-07-08T05:47:02.079+0000] {logging_mixin.py:151} INFO - Starting compression process for file: test_file.txt
+[2025-07-08T05:47:04.815+0000] {logging_mixin.py:151} INFO - Successfully downloaded test_file.txt to /tmp/test_file.txt
+[2025-07-08T05:47:04.843+0000] {logging_mixin.py:151} INFO - Compressed /tmp/test_file.txt to /tmp/test_file.txt.gz
+[2025-07-08T05:47:04.850+0000] {logging_mixin.py:151} INFO - Original size: 331 bytes
+[2025-07-08T05:47:04.851+0000] {logging_mixin.py:151} INFO - Compressed size: 242 bytes
+[2025-07-08T05:47:04.922+0000] {logging_mixin.py:151} INFO - Successfully uploaded /tmp/test_file.txt.gz to compressed-files/test_file.txt.gz
+[2025-07-08T05:47:04.936+0000] {logging_mixin.py:151} INFO - ==================================================
+[2025-07-08T05:47:04.937+0000] {logging_mixin.py:151} INFO - EMAIL NOTIFICATION
+[2025-07-08T05:47:04.938+0000] {logging_mixin.py:151} INFO - ==================================================
+[2025-07-08T05:47:04.939+0000] {logging_mixin.py:151} INFO - To: simranpandey107@gmail.com
+[2025-07-08T05:47:04.939+0000] {logging_mixin.py:151} INFO - Subject: File Compression Complete: test_file.txt
+[2025-07-08T05:47:04.940+0000] {logging_mixin.py:151} INFO - 
+        File compression process completed successfully!
+        
+        File Details:
+        - Original file: test_file.txt
+        - Compressed file: test_file.txt.gz
+        - Original size: 331 bytes
+        - Compressed size: 242 bytes
+        - Compression ratio: 26.89%
+        - Space saved: 89 bytes
+        
+        Process completed at: 2025-07-08 05:47:04
+        
+[2025-07-08T05:47:04.941+0000] {logging_mixin.py:151} INFO - ==================================================
+[2025-07-08T05:47:04.941+0000] {logging_mixin.py:151} INFO - Email notification prepared (printed to logs)
+[2025-07-08T05:47:04.942+0000] {logging_mixin.py:151} INFO - Cleaned up /tmp/test_file.txt
+[2025-07-08T05:47:04.943+0000] {logging_mixin.py:151} INFO - Cleaned up /tmp/test_file.txt.gz
+[2025-07-08T05:47:04.944+0000] {logging_mixin.py:151} INFO - Successfully completed compression process for test_file.txt
+[2025-07-08T05:47:04.945+0000] {python.py:194} INFO - Done. Returned value was: None
+[2025-07-08T05:47:04.965+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=minio_file_compressor, task_id=compress_file, execution_date=20250708T054657, start_date=20250708T054701, end_date=20250708T054704
+[2025-07-08T05:47:05.015+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-07-08T05:47:05.046+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

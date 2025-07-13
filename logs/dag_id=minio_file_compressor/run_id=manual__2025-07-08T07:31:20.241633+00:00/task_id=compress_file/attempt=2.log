@@ -1,0 +1,22 @@
+[2025-07-08T07:36:47.689+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: minio_file_compressor.compress_file manual__2025-07-08T07:31:20.241633+00:00 [queued]>
+[2025-07-08T07:36:47.726+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: minio_file_compressor.compress_file manual__2025-07-08T07:31:20.241633+00:00 [queued]>
+[2025-07-08T07:36:47.728+0000] {taskinstance.py:1359} INFO - Starting attempt 2 of 2
+[2025-07-08T07:36:47.791+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): compress_file> on 2025-07-08 07:31:20.241633+00:00
+[2025-07-08T07:36:47.814+0000] {standard_task_runner.py:57} INFO - Started process 69 to run task
+[2025-07-08T07:36:47.823+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'minio_file_compressor', 'compress_file', 'manual__2025-07-08T07:31:20.241633+00:00', '--job-id', '21', '--raw', '--subdir', 'DAGS_FOLDER/file_compress.py', '--cfg-path', '/tmp/tmpfaifrgac']
+[2025-07-08T07:36:47.825+0000] {standard_task_runner.py:85} INFO - Job 21: Subtask compress_file
+[2025-07-08T07:36:47.929+0000] {task_command.py:415} INFO - Running <TaskInstance: minio_file_compressor.compress_file manual__2025-07-08T07:31:20.241633+00:00 [running]> on host 46e48579a505
+[2025-07-08T07:36:48.079+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='minio_file_compressor' AIRFLOW_CTX_TASK_ID='compress_file' AIRFLOW_CTX_EXECUTION_DATE='2025-07-08T07:31:20.241633+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-07-08T07:31:20.241633+00:00'
+[2025-07-08T07:36:48.083+0000] {taskinstance.py:1935} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/file_compress.py", line 169, in process_file_compression
+    raise ValueError("object_name not provided in DAG configuration")
+ValueError: object_name not provided in DAG configuration
+[2025-07-08T07:36:48.103+0000] {taskinstance.py:1398} INFO - Marking task as FAILED. dag_id=minio_file_compressor, task_id=compress_file, execution_date=20250708T073120, start_date=20250708T073647, end_date=20250708T073648
+[2025-07-08T07:36:48.127+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 21 for task compress_file (object_name not provided in DAG configuration; 69)
+[2025-07-08T07:36:48.171+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2025-07-08T07:36:48.210+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check
